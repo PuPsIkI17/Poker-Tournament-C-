@@ -12,7 +12,7 @@ Jucătorul este definit printr-un id de identificare (char *) și un număr de m
 Evenimentele ce pot avea loc asupra sălii/meselor/jucătorilor sunt: 
   
 <b><i>a) print </i></b>
-</br>&nbsp;&nbsp;&nbsp;-Evenimentul prin care se va face afișarea sălii la momentul curent. Jucătorii de la masă sunt afișați in ordinea mâinii de joc curente(configurația la momentul actual).            
+</br>&nbsp;&nbsp;&nbsp;-Evenimentul prin care se va face afișarea sălii la momentul curent. Jucătorii de la masă sunt afișați in ordinea mâinii de joc curente(configurația la momentul actual).
 </br>&nbsp;&nbsp;&nbsp;-Jucătorul care se află “primul” la momentul curent este chiar cel din dreapta santinelei. 
 </br>&nbsp;&nbsp;&nbsp;-În cazul în care nu există nicio masă, se afiseaza mesajul "Sala este inchisa!"
 
