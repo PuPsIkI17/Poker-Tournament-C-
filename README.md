@@ -24,7 +24,7 @@ Evenimentele ce pot avea loc asupra sălii/meselor/jucătorilor sunt:
 </br>&nbsp;&nbsp;&nbsp;-Este evenimentul opus precedentului (noroc), prin care unui jucător i se scade  din numărul de mâini pe care le poate juca valoarea grad_ghinion. 
 </br>&nbsp;&nbsp;&nbsp;-De asemenea, se verifica pentru ambele evenimente (noroc, ghinion) faptul că datele sunt valide.
 Asta înseamnă că:
-</br>&nbsp;&nbsp;&nbsp;-În cazul în care numele mesei nu este valid ([nume_masă] nu apare în lista de mese) se va afișa mesajul: “​Masa [nume_masa] nu exista!” 
+</br>&nbsp;&nbsp;&nbsp;-În cazul în care numele mesei nu este valid ([nume_masă] nu apare în lista de mese) se va afișa mesajul: “Masa [nume_masa] nu exista!” 
 </br>&nbsp;&nbsp;&nbsp;-În cazul în care numele jucătorului nu este valid ([nume_jucător] nu apare în lista mesei [nume_masa]) se va afișa mesajul: “Jucatorul [nume_jucător] nu exista la masa [nume_masa]!” 
 
 <b><i>d) tura [nume_masă]  </i></b>
@@ -41,6 +41,6 @@ Asta înseamnă că:
 </br>&nbsp;&nbsp;&nbsp;-În cazul în care doi jucători au același număr de mâini rămase pentru a fi jucate, compararea dintre cei doi se face lexicografic, in funcție de numele acestora, folosind ordinea din tabela ASCII. 
 
 <b><i>g) inchide [nume_masa] </i></b>
-Apelând evenimentul “închide nume_masa”, se dorește desființarea (ștergerea) mesei primita ca parametru. 
+</br>&nbsp;&nbsp;&nbsp;-Apelând evenimentul “închide nume_masa”, se dorește desființarea (ștergerea) mesei primita ca parametru. 
 </br>&nbsp;&nbsp;&nbsp;-Altfel, lista destinată acelei mese va fi ștearsă din memorie, iar jucătorii aflați la masa respectiva sunt redistribuiți la mese după cum urmează: 
 </br>&nbsp;&nbsp;&nbsp;-Se parcurg mesele de la început spre sfârșit. Dacă masa curentă dispune de locuri libere, sunt adăugați atâția jucători de la masa eliminată încât noua masă permite, în ordinea în care aceștia se aflau la masa închisă. Jucătorii sunt adaugati la sfârșitul listei. Procedeul se repetă, continuând la următoarea masă, până când toți jucătorii de la masa eliminată sunt așezați la o noua masă 
