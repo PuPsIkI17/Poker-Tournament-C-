@@ -12,35 +12,35 @@ Jucătorul este definit printr-un id de identificare (char *) și un număr de m
 Evenimentele ce pot avea loc asupra sălii/meselor/jucătorilor sunt: 
   
 <b><i>a) print </i></b>
-</br>-Evenimentul prin care se va face afișarea sălii la momentul curent. Jucătorii de la masă sunt afișați in ordinea mâinii de joc curente(configurația la momentul actual).            
-</br>-Jucătorul care se află “primul” la momentul curent este chiar cel din dreapta santinelei. 
-</br>-În cazul în care nu există nicio masă, se afiseaza mesajul "Sala este inchisa!"
+</br>&nbsp;&nbsp;&nbsp;-Evenimentul prin care se va face afișarea sălii la momentul curent. Jucătorii de la masă sunt afișați in ordinea mâinii de joc curente(configurația la momentul actual).            
+</br>&nbsp;&nbsp;&nbsp;-Jucătorul care se află “primul” la momentul curent este chiar cel din dreapta santinelei. 
+</br>&nbsp;&nbsp;&nbsp;-În cazul în care nu există nicio masă, se afiseaza mesajul "Sala este inchisa!"
 
 <b><i>b) noroc [nume_masă] [nume_jucător] [grad_noroc] </i></b>
-</br>-Evenimentul prin care un jucător primește mai multe șanse de a rămâne în joc, numărul de mâini pe care acesta le poate juca fiind incrementat. 
-</br>-Parametrii reprezintă: ● noroc - numele operației ● nume_masa - numele mesei la care jucătorul se află ● nume_jucător - numele jucătorului “norocos” ● grad_noroc - întreg mai mare ca 0 
+</br>&nbsp;&nbsp;&nbsp;-Evenimentul prin care un jucător primește mai multe șanse de a rămâne în joc, numărul de mâini pe care acesta le poate juca fiind incrementat. 
+</br>&nbsp;&nbsp;&nbsp;-Parametrii reprezintă: ● noroc - numele operației ● nume_masa - numele mesei la care jucătorul se află ● nume_jucător - numele jucătorului “norocos” ● grad_noroc - întreg mai mare ca 0 
 
 <b><i>c) ghinion [nume_masă] [nume_jucător] [grad_ghinion]</i></b> 
-</br>-Este evenimentul opus precedentului (noroc), prin care unui jucător i se scade  din numărul de mâini pe care le poate juca valoarea grad_ghinion. 
-</br>-De asemenea, se verifica pentru ambele evenimente (noroc, ghinion) faptul că datele sunt valide.
+</br>&nbsp;&nbsp;&nbsp;-Este evenimentul opus precedentului (noroc), prin care unui jucător i se scade  din numărul de mâini pe care le poate juca valoarea grad_ghinion. 
+</br>&nbsp;&nbsp;&nbsp;-De asemenea, se verifica pentru ambele evenimente (noroc, ghinion) faptul că datele sunt valide.
 Asta înseamnă că:
-</br>-În cazul în care numele mesei nu este valid ([nume_masă] nu apare în lista de mese) se va afișa mesajul: “​Masa [nume_masa] nu exista!” 
-</br>-În cazul în care numele jucătorului nu este valid ([nume_jucător] nu apare în lista mesei [nume_masa]) se va afișa mesajul: “Jucatorul [nume_jucător] nu exista la masa [nume_masa]!” 
+</br>&nbsp;&nbsp;&nbsp;-În cazul în care numele mesei nu este valid ([nume_masă] nu apare în lista de mese) se va afișa mesajul: “​Masa [nume_masa] nu exista!” 
+</br>&nbsp;&nbsp;&nbsp;-În cazul în care numele jucătorului nu este valid ([nume_jucător] nu apare în lista mesei [nume_masa]) se va afișa mesajul: “Jucatorul [nume_jucător] nu exista la masa [nume_masa]!” 
 
 <b><i>d) tura [nume_masă]  </i></b>
-</br>-Evenimentul prin care se informează că a avut loc o mână jucată la o anumită masa. Acest lucru implică decrementarea cu 1 a valorii din câmpului număr de mâini pentru fiecare jucător de la masa respectivăși reordonarea în listă conform regulii: al doilea jucător (al doilea element din lista) devine primul; al treilea devine al doilea; primul jucător devine ultimul. Rotația are loc în jurul santinelei. 
-</br>-Realizarea unei ture presupune mai întâi rotația în jurul santinelei și apoi efectuarea decrementării numărului de mâini pentru fiecare jucător de la masă. 
+</br>&nbsp;&nbsp;&nbsp;-Evenimentul prin care se informează că a avut loc o mână jucată la o anumită masa. Acest lucru implică decrementarea cu 1 a valorii din câmpului număr de mâini pentru fiecare jucător de la masa respectivăși reordonarea în listă conform regulii: al doilea jucător (al doilea element din lista) devine primul; al treilea devine al doilea; primul jucător devine ultimul. Rotația are loc în jurul santinelei. 
+</br>&nbsp;&nbsp;&nbsp;-Realizarea unei ture presupune mai întâi rotația în jurul santinelei și apoi efectuarea decrementării numărului de mâini pentru fiecare jucător de la masă. 
 
 <b><i>e) tura_completa </i></b>
-</br>-Evenimentul are un comportament similar celui descris mai sus, însă se realizeaza pentru toate mesele. 
-</br>-În cazul în care în urma unui eveniment, un jucător ajunge să aibă valoarea numărului de mâini pe care le poate juca mai mică sau egală cu 0, jucătorul este eliminat de la masa (înregistrarea sa este din lista). 
-</br>-În cazul în care masa are un număr curent de jucători egal cu 0, ea este eliminată și ștearsă din memorie.
+</br>&nbsp;&nbsp;&nbsp;-Evenimentul are un comportament similar celui descris mai sus, însă se realizeaza pentru toate mesele. 
+</br>&nbsp;&nbsp;&nbsp;-În cazul în care în urma unui eveniment, un jucător ajunge să aibă valoarea numărului de mâini pe care le poate juca mai mică sau egală cu 0, jucătorul este eliminat de la masa (înregistrarea sa este din lista). 
+</br>&nbsp;&nbsp;&nbsp;-În cazul în care masa are un număr curent de jucători egal cu 0, ea este eliminată și ștearsă din memorie.
  
 <b><i>f) clasament [nume_masă]</i></b> 
-</br>-Prin apelarea acestui eveniment, se afiseaza jucătorii de la o anumită masă, descrescător după numărul de mâini rămase pentru a fi jucate de fiecare jucător. Lista este construită sortată descrescător în funcție de clasamentul jucătorilor, prin inserarea ordonata, succesiva jucătorilor. 
-</br>-În cazul în care doi jucători au același număr de mâini rămase pentru a fi jucate, compararea dintre cei doi se face lexicografic, in funcție de numele acestora, folosind ordinea din tabela ASCII. 
+</br>&nbsp;&nbsp;&nbsp;-Prin apelarea acestui eveniment, se afiseaza jucătorii de la o anumită masă, descrescător după numărul de mâini rămase pentru a fi jucate de fiecare jucător. Lista este construită sortată descrescător în funcție de clasamentul jucătorilor, prin inserarea ordonata, succesiva jucătorilor. 
+</br>&nbsp;&nbsp;&nbsp;-În cazul în care doi jucători au același număr de mâini rămase pentru a fi jucate, compararea dintre cei doi se face lexicografic, in funcție de numele acestora, folosind ordinea din tabela ASCII. 
 
 <b><i>g) inchide [nume_masa] </i></b>
 Apelând evenimentul “închide nume_masa”, se dorește desființarea (ștergerea) mesei primita ca parametru. 
-</br>-Altfel, lista destinată acelei mese va fi ștearsă din memorie, iar jucătorii aflați la masa respectiva sunt redistribuiți la mese după cum urmează: 
-</br>-Se parcurg mesele de la început spre sfârșit. Dacă masa curentă dispune de locuri libere, sunt adăugați atâția jucători de la masa eliminată încât noua masă permite, în ordinea în care aceștia se aflau la masa închisă. Jucătorii sunt adaugati la sfârșitul listei. Procedeul se repetă, continuând la următoarea masă, până când toți jucătorii de la masa eliminată sunt așezați la o noua masă 
+</br>&nbsp;&nbsp;&nbsp;-Altfel, lista destinată acelei mese va fi ștearsă din memorie, iar jucătorii aflați la masa respectiva sunt redistribuiți la mese după cum urmează: 
+</br>&nbsp;&nbsp;&nbsp;-Se parcurg mesele de la început spre sfârșit. Dacă masa curentă dispune de locuri libere, sunt adăugați atâția jucători de la masa eliminată încât noua masă permite, în ordinea în care aceștia se aflau la masa închisă. Jucătorii sunt adaugati la sfârșitul listei. Procedeul se repetă, continuând la următoarea masă, până când toți jucătorii de la masa eliminată sunt așezați la o noua masă 
